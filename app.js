@@ -95,7 +95,7 @@ var rendImg = function (){
   for(var i = 0; i < selectionNumbers.length; i++){
     var imgEl = document.createElement('input');
     imgEl.setAttribute('type', 'image');
-    imgEl.setAttribute('id', imageArray[selectionNumbers[i]].imgName);
+    imgEl.setAttribute('id', 'randImg');
     imgEl.setAttribute('src', imageArray[selectionNumbers[i]].filePath);
     sectionEl.appendChild(imgEl);
     imageArray[selectionNumbers[i]].timeShown++;
