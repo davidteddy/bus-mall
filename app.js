@@ -1,20 +1,20 @@
 'use strict';
-var cycle = 0;
+var cycleCount = 0;
 var selectionNumbers = [];
 var num1 = 0;
 var num2 = 0;
 var num3 = 0;
 
-var selectEl = document.getElementById('settingimg');
+var selectEl = document.getElementById('setting-img');
 
 function ProductImg(imgName, filePath){
   this.imgName = imgName;
   this.filePath = filePath;
 
-  var clickCount;
-  this.clickCount = 0;
-  var timeShown;
-  this.timeShown = 0;
+  var clickCount = 0;
+  this.clickCount = clickCount;
+  var timeShown = 0;
+  this.timeShown = timeShown;
 }
 
 var bag = new ProductImg('bag', 'img/bag.jpg');
@@ -87,6 +87,7 @@ var imgRem = function(){
 
 var rendImg = function (){
   imgRem();
+  imgSrc();
   var sectionEl = document.createElement('section');
   sectionEl.setAttribute('id', 'funk');
   selectEl.appendChild(sectionEl);
@@ -94,28 +95,31 @@ var rendImg = function (){
   for(var i = 0; i < selectionNumbers.length; i++){
     var imgEl = document.createElement('input');
     imgEl.setAttribute('type', 'image');
-    imgEl.setAttribute('id', 'randImg');
+    imgEl.setAttribute('id', imageArray[selectionNumbers[i]].imgName);
     imgEl.setAttribute('src', imageArray[selectionNumbers[i]].filePath);
     sectionEl.appendChild(imgEl);
     imageArray[selectionNumbers[i]].timeShown++;
   }
 };
 
-imgSrc();
 rendImg();
 
-var chosen = document.getElementById('randImg');
+var chosen = document.getElementById('setting-img');
 
 chosen.onlick = function(){
   if (cycleCount < 25){
-    this.clickCount++;
+    for (var i = 0; i < imageArray.length; i++){
+      if (imageArray[i].includes(this.id())){
+        imageArray[i].timesClicked++;
+      }
+    }
     rendImg();
     cycleCount++;
   }
   else{
     imgRem();
     var completeImage = document.createElement('p');
-    completeImage.textContent('This is the end');
+    completeImage.textContent = 'This is the end';
     selectEl.appendChild(completeImage);
   }
 };
