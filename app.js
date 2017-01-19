@@ -111,7 +111,7 @@ function imgThree(){
 //listener for when an image is selected
 var choices = document.getElementById('setting-img');
 choices.addEventListener('click', function clickListener() {
-  if (cycleCount < 5) {
+  if (cycleCount < 25) {
     for (var i = 0; i < imageArray.length; i++) {
       if (imageArray[i].imgName == this.imgName) {
         imageArray[i].clickCount++;
