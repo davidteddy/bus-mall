@@ -5,3 +5,7 @@
 body{
   background-color: #093B90;
 }
+canvas{
+  width: auto;
+  height: auto;
+}
