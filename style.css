@@ -1,0 +1,13 @@
+#randImg{
+  width: 200px;
+  align-items: center;
+}
+
+body{
+  background-color: #093B90;
+}
+canvas{
+  width: 1000px;
+  height: auto;
+
+}
