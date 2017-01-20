@@ -1,5 +1,6 @@
 #randImg{
   width: 200px;
+  align-items: center;
 }
 
 body{
@@ -8,5 +9,5 @@ body{
 canvas{
   width: 1000px;
   height: auto;
-  
+
 }

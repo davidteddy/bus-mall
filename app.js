@@ -8,6 +8,7 @@ var imgEl1, imgEl2, imgEl3;
 var showenImg1, showenImg2, showenImg3;
 var selectEl = document.getElementById('setting-img');
 var chartData = [];
+// localStorage.storedData = [];
 //image object constructor
 function ProductImg(imgName, filePath, id){
   this.imgName = imgName;
@@ -15,6 +16,7 @@ function ProductImg(imgName, filePath, id){
   this.id = id;
   this.clickCount = 0;
   this.timeShown = 0;
+
 }
 //initializing the images into the constructor
 var bag = new ProductImg('bag', 'img/bag.jpg', 'bag');
@@ -121,10 +123,18 @@ choices.addEventListener('click', function clickListener() {
     cycleCount++;
   } else {
     //build the chart data
-    for (var index = 0; index < imageArray.length; index++) {
-      var clickedData = imageArray[index].clickCount;
-      chartData[index] = clickedData;
+    for (var i = 0; i < imageArray.length; i++) {
+      var clickedData = imageArray[i].clickCount;
+      var storedTotal = 0;
+      var storedData = JSON.parse(localStorage.getItem('storedData'));
+      console.log(storedData);
+      // for (var j = 0; j < storedData.length; j++) {
+      //   storedTotal += storedData;
+      // }
+      clickedData += storedTotal;
+      chartData[i] = clickedData;
     }
+    localStorage.setItem('storedData', JSON.stringify(chartData));
     console.log(chartData);
     buildChart();
     imgEl1.removeEventListener('click',imgOne);
