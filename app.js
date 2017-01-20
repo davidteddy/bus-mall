@@ -128,13 +128,12 @@ choices.addEventListener('click', function clickListener() {
       var storedTotal = 0;
       var storedData = JSON.parse(localStorage.getItem('storedData'));
       console.log(storedData);
-      // for (var j = 0; j < storedData.length; j++) {
-      //   storedTotal += storedData;
-      // }
+
       clickedData += storedTotal;
       chartData[i] = clickedData;
     }
     localStorage.setItem('storedData', JSON.stringify(chartData));
+
     console.log(chartData);
     buildChart();
     imgEl1.removeEventListener('click',imgOne);
